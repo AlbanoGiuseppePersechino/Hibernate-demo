@@ -1,25 +1,44 @@
 package co.develhope.demo_hibernate.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+
 
 @Entity
-@Table
-@Data
-@NoArgsConstructor
+@Table(name = "enrollment")
 public class Enrollment {
 
+    Enrollment(){
+
+    }
+
+    public Enrollment(Student student, Classes classes) {
+        this.student = student;
+        this.classes = classes;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "studentId", nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn
-    private Class classes;
+    @JoinColumn(name = "classId", nullable = false)
+    private Classes classes;
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
 }
