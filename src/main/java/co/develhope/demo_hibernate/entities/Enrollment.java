@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 public class Enrollment {
 
     Enrollment(){
-
     }
 
     public Enrollment(Student student, Classes classes) {
@@ -22,11 +21,11 @@ public class Enrollment {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "studentId", nullable = false)
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "classId", nullable = false)
+    @JoinColumn(name = "class-id", nullable = false)
     private Classes classes;
 
 
